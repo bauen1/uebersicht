@@ -31,8 +31,8 @@ int main(int argc, char *argv[]) {
 
 	WebKitWebView *webView = WEBKIT_WEB_VIEW(webkit_web_view_new());
 	gtk_container_add(GTK_CONTAINER(main_window), GTK_WIDGET(webView));
-	GdkRGBA = {0, 0, 0, 0};
-	webkit_web_view_set_background_color(WEBKIT_WEB_VIEW(webView));
+	GdkRGBA bgcol = {0, 0, 0, 0};
+	webkit_web_view_set_background_color(WEBKIT_WEB_VIEW(webView), &bgcol);
 	webkit_web_view_load_uri(WEBKIT_WEB_VIEW(webView), "http://localhost:41416/");
 	webkit_settings_set_enable_developer_extras(WEBKIT_SETTINGS(webkit_web_view_get_settings(WEBKIT_WEB_VIEW(webView))), TRUE);
 
