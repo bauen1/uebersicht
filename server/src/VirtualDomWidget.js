@@ -1,4 +1,4 @@
-const RenderLoop = require('./RenderLoop');
+const renderLoop = require('./renderLoop');
 const Timer = require('./Timer');
 const runCommand = require('./runCommand');
 const snabbdom = require('snabbdom');
@@ -84,7 +84,7 @@ module.exports = function VirtualDomWidget(widgetObject) {
     wrapperEl.appendChild(contentEl);
     document.body.appendChild(wrapperEl);
 
-    renderLoop = RenderLoop(
+    renderLoop = renderLoop(
       implementation.initialProps,
       render,
       patch,
