@@ -2,7 +2,7 @@
 
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
-#include <webkit2gtk/webkit2gtk.h>
+#include <webkit2/webkit2.h>
 
 static void die(const char *err) {
 	fputs(err, stderr);
@@ -12,7 +12,7 @@ static void die(const char *err) {
 int main(int argc, char *argv[]) {
 	gtk_init(&argc, &argv);
 
-	GtKWidget *main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+	GtkWidget *main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	GdkScreen *screen = gtk_window_get_screen(GTK_WINDOW(main_window));
 	GdkVisual *visual = gdk_screen_get_rgba_visual(screen);
 	if (visual && gdk_screen_is_composited(screen)) {
