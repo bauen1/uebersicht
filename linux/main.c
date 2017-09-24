@@ -9,6 +9,10 @@ static void die(const char *err) {
 	exit(EXIT_FAILURE);
 }
 
+static void destroy_cb(GtkWidget *widget, gpointer data) {
+	gtk_main_quit();
+}
+
 int main(int argc, char *argv[]) {
 	gtk_init(&argc, &argv);
 
@@ -25,7 +29,12 @@ int main(int argc, char *argv[]) {
 
 	g_signal_connect(G_OBJECT(main_window), "destroy", G_CALLBACK(destroy_cb), NULL);
 
-	// TODO: webview
+	WebKitWebView *webView = WEBKIT_WEB_VIEW(webkit_web_view_new());
+	gtk_container_add(GTK_CONTAINER(main_window), GTK_WIDGET(webView));
+	GdkRGBA = {0, 0, 0, 0};
+	webkit_web_view_set_background_color(WEBKIT_WEB_VIEW(webView));
+	webkit_web_view_load_uri(WEBKIT_WEB_VIEW(webView), "http://localhost:41416/");
+	webkit_settings_set_enable_developer_extras(WEBKIT_SETTINGS(webkit_web_view_get_settings(WEBKIT_WEB_VIEW(webView))), TRUE);
 
 	gtk_widget_show_all(main_window);
 	gtk_window_fullscreen(GTK_WINDOW(main_window)); // works for xfce, kinda
